@@ -5,11 +5,11 @@ interface Props {
   toggleParticipation: (id: string) => void
 }
 
-const Participant = ({participant, toggleParticipation}: Props) => {
+const Participant = ({ participant, toggleParticipation }: Props) => {
 
   return (
     <div>
-      <span onClick={() => {
+      <span style={{ cursor: 'pointer' }} onClick={() => {
         toggleParticipation(participant.id)
       }}>{participant.name}</span>
     </div>

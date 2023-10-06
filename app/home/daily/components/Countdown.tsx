@@ -2,6 +2,7 @@
 "use client"
 import { TimerSettings, useTimer } from "react-timer-hook"
 
+import { ActionIcon, Button } from '@mantine/core';
 
 interface Props {
   settings: TimerSettings
@@ -35,12 +36,12 @@ const Countdown = ({ settings }: Props) => {
         <span>{addPad(minutes)}</span>:<span>{addPad(seconds)}</span>
       </div>
       <p>{isRunning ? 'Running' : 'Not running'}</p>
-      <button onClick={handleToggle}>{text}</button>
-      <button onClick={() => {
+      <Button variant="outline" color="white" onClick={handleToggle}>{text}</Button>
+      <Button variant="outline" color="white" style={{ marginLeft: '10px' }} onClick={() => {
         const time = new Date();
         time.setSeconds(time.getSeconds() + 90);
         restart(time)
-      }}>Restart</button>
+      }}>Restart</Button>
     </div>
   );
 }

@@ -1,20 +1,23 @@
-import { Flex, Title } from "@mantine/core"
+import { Flex, Title, Box } from "@mantine/core"
 import GeneralSetting from "./components/general/GeneralSettings"
-
+import styles from './settings.module.css'
 
 const Settings = () => {
 
   return (
     <>
-      <Flex
-        gap="sm"
-        justify="center"
-        align="center"
-      >
-        <Title>Settings</Title >
-      </Flex>
+      <Box className={styles.boxStyles}>
 
-    <GeneralSetting/>
+        <Flex
+          gap="sm"
+          justify="center"
+          align="center"
+        >
+          <Title >Settings</Title >
+        </Flex>
+
+        <GeneralSetting />
+      </Box>
 
     </>
   )

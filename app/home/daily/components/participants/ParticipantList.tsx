@@ -1,9 +1,9 @@
 "use client"
-import { Flex, Title } from "@mantine/core"
+import { Flex, Title, List } from "@mantine/core"
 import Participant from "./Participant"
 import ParticipantEntity from "./schema/participant.entity"
 import { useEffect, useState } from "react"
-
+import styles from './participants.module.css'
 
 interface Props {
 }
@@ -34,26 +34,30 @@ const ParticipantList = ({ }: Props) => {
       <Flex
         mih={50}
         gap="sm"
-        justify="center"
-        align="center"
         direction="column"
         wrap="wrap"
+        style={{ width: '75%', margin: 'auto' }}
       >
-        <Title order={3}>Participants</Title>
+        <Title order={1}>Participants</Title>
 
 
-        <Title order={3}>Pending</Title>
 
-        {participants.filter((p) => !p.hasParticipated).map((p) => {
+        <Title className={styles.alignLeft} order={3}>Pending</Title>
 
-          return <Participant key={p.id} participant={p} toggleParticipation={toggleParticipation} />
-        })}
+        <List className={styles.list} >
+
+          {participants.filter((p) => !p.hasParticipated).map((p) => {
+            return (<Participant key={p.id} participant={p} toggleParticipation={toggleParticipation} />)
+          })}
+        </List>
 
         <Title order={3}>Already participated</Title>
-        {participants.filter((p) => p.hasParticipated).map((p) => {
+        <List className={styles.list} >
+          {participants.filter((p) => p.hasParticipated).map((p) => {
 
-          return <Participant key={p.id} participant={p} toggleParticipation={toggleParticipation} />
-        })}
+            return (<Participant key={p.id} participant={p} toggleParticipation={toggleParticipation} />)
+          })}
+        </List>
       </Flex>
     </>
   )

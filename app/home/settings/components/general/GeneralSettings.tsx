@@ -30,11 +30,11 @@ const GeneralSetting = () => {
 
   }
 
-  const removeFromList = (id: string ) => {
+  const removeFromList = (id: string) => {
     setParticipants((prev) => prev.filter((_, i) => String(i) !== id))
   }
 
-  
+
   return (
     <>
       <Box style={{ display: "flex", justifyContent: "center" }}>
@@ -42,14 +42,18 @@ const GeneralSetting = () => {
           <TextInput
             label="Participants"
             description="Enter a comma separated list of names. i.e. Maria, Juan, Jose"
-            placeholder="Input placeholder"
+            placeholder="Participant name"
+            maxLength={20}
+            className="nameInput"
+            size="md"
             {...form.getInputProps('names')}
+
           />
         </form>
 
       </Box>
       <Box style={{ display: "flex", justifyContent: "center" }}>
-        <NamesList list={participants || []} removeItem={removeFromList}/>
+        <NamesList list={participants || []} removeItem={removeFromList} />
       </Box>
     </>
   )

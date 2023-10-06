@@ -1,8 +1,5 @@
 import Link from "next/link"
 
-
-
-
 const Home = () => {
 
   // add some logo or landing page later

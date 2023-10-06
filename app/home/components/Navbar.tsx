@@ -1,12 +1,18 @@
 
 "use client"
 
-import { ActionIcon } from '@mantine/core';
+import { ActionIcon, Button } from '@mantine/core';
 import Link from 'next/link';
-import { IconPhoto, IconSettings } from '@tabler/icons-react';
+import { IconSettings, IconPhoto } from '@tabler/icons-react';
 import { signOut } from 'next-auth/react';
-
+import styles from './navbar.module.css'
+import Image from 'next/image'
+import { usePathname } from 'next/navigation';
+import settingsIcon from '../../../public/adjustments-horizontal.svg'
+import groupIcon from '../../../public/users-group.svg'
+import doorIcon from '../../../public/door-exit.svg'
 const Navbar = () => {
+  const pathname = usePathname()
   const handleSignOut = async () => {
     const rootPage = "/"
     try {
@@ -17,24 +23,28 @@ const Navbar = () => {
       console.error("Failed logging out")
     }
   }
-
   return (
-    <nav>
+    <nav className={styles.navbar}>
       {/* TODO add navbar */}
-      <Link href="/home/daily">
-        <ActionIcon variant="filled" color="gray" size="sm" aria-label="Settings">
-          <IconPhoto style={{ width: '70%', height: '70%' }} stroke={1.5} />
-        </ActionIcon>
-      </Link>
-      <Link href="/home/settings">
-        <ActionIcon variant="filled" color="gray" size="sm" aria-label="Settings">
-          <IconSettings style={{ width: '70%', height: '70%' }} stroke={1.5} />
-        </ActionIcon>
-      </Link>
-      <ActionIcon variant="filled" color="gray" size="sm" aria-label="Settings" onClick={handleSignOut}>
-        <IconSettings style={{ width: '70%', height: '70%' }} stroke={1.5} />
-      </ActionIcon>
-    </nav>
+      <div>
+        <Link href="/home/daily" className={`${styles.navbarLink} ${pathname === '/home/daily' && styles.selectedPath}`}>
+          Daily
+          <ActionIcon variant="transparent" color="gray" size="sm" aria-label="Settings">
+            <Image src={groupIcon} alt='' />
+          </ActionIcon>
+        </Link>
+        <Link href="/home/settings" className={`${styles.navbarLink} ${pathname === '/home/settings' && styles.selectedPath}`}>
+          Settings
+          <ActionIcon variant="transparent" color="gray" size="sm" aria-label="Settings">
+            <Image src={settingsIcon} alt='' />
+          </ActionIcon>
+        </Link>
+      </div>
+      <Button className={styles.logoutButton} rightSection={<Image src={doorIcon} alt='' />} onClick={handleSignOut}>
+        Logout
+      </Button>
+
+    </nav >
   )
 }
 

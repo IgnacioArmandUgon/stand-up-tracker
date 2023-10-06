@@ -1,7 +1,7 @@
+import Image from 'next/image'
 import { ActionIcon, List } from "@mantine/core"
 import { IconTrash } from "@tabler/icons-react"
-
-
+import trashIcon from '../../../../../public/trash.svg'
 interface Props {
   list: string[]
   removeItem: (id: string) => void
@@ -12,16 +12,20 @@ const NamesList = ({ list, removeItem }: Props) => {
 
 
   return (
-    <List>
+    <List style={{ width: '360px' }}>
       {list.map((item, i) => (
-        <List.Item key={i} style={{ display: "flex", justifyContent: "space-between" }}>
+        <div key={i} style={{ display: "flex", justifyContent: "space-between", marginTop: '8px' }}>
+
           {item}
-          <ActionIcon variant="filled" color="red" size="xs" radius="xs" aria-label="Trashcan" onClick={() => removeItem(String(i))}>
-            <IconTrash style={{ width: '70%', height: '70%' }} stroke={1.5} />
+          <ActionIcon variant="filled" color="red" size="md" radius="xs" aria-label="Trashcan" onClick={() => removeItem(String(i))}>
+            <Image src={trashIcon} alt='' />
           </ActionIcon>
-        </List.Item>
-      ))}
-    </List>
+
+
+        </div>
+      ))
+      }
+    </List >
   )
 }
 

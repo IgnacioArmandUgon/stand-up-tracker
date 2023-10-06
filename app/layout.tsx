@@ -3,7 +3,6 @@
 import '@mantine/core/styles.css';
 
 import { MantineProvider, ColorSchemeScript } from '@mantine/core';
-
 export const metadata = {
   title: 'Daily stand-up tracker',
   description: 'Time is of the essence.',
@@ -17,7 +16,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
       <body>
         <MantineProvider>
-          {children}
+          <div style={{ backgroundClip: '#5e82AC' }}>
+            {children}
+          </div>
         </MantineProvider>
       </body>
     </html>

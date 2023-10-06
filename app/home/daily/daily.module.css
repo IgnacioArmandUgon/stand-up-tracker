@@ -1,0 +1,33 @@
+
+.boxContainer {
+    display: flex;
+    gap: 10px;
+    margin: 10px;
+    justify-content: center;
+   @media (width <= 800px) {
+        flex-direction: column;
+    justify-content: center;    
+    align-items: center;
+    };
+    .boxStyles {
+        border-radius: 10px;
+        background-color: #5e82AC;
+        width: 500px;
+        padding: 20px;
+        color: white;
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+        p {
+            color: white;
+        }
+        h1 {
+            font-size: 50px;
+            letter-spacing: 3px;
+            margin: auto;
+            text-align: center;
+        }
+        @media (width <= 800px) {
+            width: 90%;
+        };
+        
+    }
+}
